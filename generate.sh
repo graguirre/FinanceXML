@@ -1,6 +1,23 @@
 #!/bin/sh
 
-if [ ! -f $1 ]; then
+# check dependences (xml2)
+if [ ! -e /usr/bin/xml2 ];
+then
+	echo "ERROR: xml2 command not found."
+	echo "Generation cannot continue."
+	exit 3
+fi
+
+# check dependences (python2)
+if [ ! -e /usr/bin/python2 ];
+then
+	echo "ERROR: python command not found."
+	echo "Generation cannot continue."
+	exit 3
+fi
+
+
+if [ ! -f $2 ]; then
 	echo "File not found"
 	echo "syntax: sh generate.sh input-file.xml"
 	exit 1
