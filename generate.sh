@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # check dependences (xml2)
-if [ ! -e /usr/bin/xml2 ];
+if ! [ -e /usr/bin/xml2 -o -e /usr/local/bin/xml2 ];
 then
 	echo "ERROR: xml2 command not found."
 	echo "Generation cannot continue."
