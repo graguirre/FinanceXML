@@ -1,17 +1,21 @@
 Set of script to convert from PostFinance XML format to CSV/QIF Xero
 
-Dependency:
+Dependency
+----------
+
 xml2 0.5-1 
     XML/Unix Processing Tools to convert XML and HTML to and from a
     line-oriented format more amenable to processing by classic Unix pipeline
     processing tools
 
-Languages:
+Languages
+---------
 	python 2.7.6
 	GNU bash 4.3.0
 
 
-example:
+Example
+-------
 $ sh generate.sh acc_200_d_4031808268.xml
 
 output 1st stage (XML -> TXT):
