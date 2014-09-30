@@ -46,6 +46,7 @@ for e in entries:
         p = e[9].split(os.linesep)
 	if float(e[7]) == 0.0:
 		print >> sys.stderr, "*** WARNING null amount entry."
+		null_amount.append([e[5],e[7],p[3],e[3],e[6],e[4],e[8],e[9]])
 	else:
         	direct.append([e[5],e[7],p[3],e[3],e[6],e[4],e[8],e[9]])
     elif e[0]=='LTI':
@@ -77,4 +78,9 @@ drc.writerows(direct)
 tot = csv.writer(open('out_tot.csv','w'),quoting=csv.QUOTE_ALL)
 tot.writerow(["credit","amount 1","description 1","debit","amount 2","description 2"])
 tot.writerows(totals)
+
+nul = csv.writer(open('out_null.csv','w'),quoting=csv.QUOTE_ALL)
+nul.writerow(["date","amount","payee","reference","type","TGT","EPC","description"])
+nul.writerows(null_amount)
+
 
