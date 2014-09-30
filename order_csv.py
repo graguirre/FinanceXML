@@ -21,12 +21,18 @@ except IOError:
 
 entries = csv.reader(f)
 
+header = True # skip CSV header
+
 balance=[]
 transact=[]
 direct=[]
 totals=[]
+null_amount=[]
 
 for e in entries:
+    if header:
+	header = False
+	continue
     if e[0]=='LST':
         balance.append([e[2],e[1],e[3]])
     elif e[0]=='LNE':
@@ -38,7 +44,10 @@ for e in entries:
             transact.append([e[6],e[8],p[2],e[3],e[7],e[4],e[9],e[10]])
     elif e[0]=='LNS':
         p = e[9].split(os.linesep)
-        direct.append([e[5],e[7],p[3],e[3],e[6],e[4],e[8],e[9]])
+	if float(e[7]) == 0.0:
+		print >> sys.stderr, "*** WARNING null amount entry."
+	else:
+        	direct.append([e[5],e[7],p[3],e[3],e[6],e[4],e[8],e[9]])
     elif e[0]=='LTI':
         totals.append([e[1],e[2],e[3],e[4],e[5],e[6]])
     else:
