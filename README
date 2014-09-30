@@ -3,6 +3,15 @@ Set of script to convert from PostFinance XML format to CSV/QIF Xero
 Download
 --------
 $ git clone https://github.com/graguirre/FinanceXML.git XML-QIF
+$ cd XML-QIF
+
+See example below how to execute.
+
+Update
+------
+On XML-QIF directory type
+
+$ git pull
 
 Dependency
 ----------
